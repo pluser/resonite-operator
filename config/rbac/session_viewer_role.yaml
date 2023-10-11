@@ -1,0 +1,27 @@
+# permissions for end users to view sessions.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: session-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: resonite
+    app.kubernetes.io/part-of: resonite
+    app.kubernetes.io/managed-by: kustomize
+  name: session-viewer-role
+rules:
+- apiGroups:
+  - resonite.resonite-operator.pluser.net
+  resources:
+  - sessions
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - resonite.resonite-operator.pluser.net
+  resources:
+  - sessions/status
+  verbs:
+  - get
